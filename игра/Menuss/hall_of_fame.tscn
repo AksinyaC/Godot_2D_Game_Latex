@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://0uom0kpt2a5w"]
+
+[ext_resource type="Script" path="res://Menuss/hall_of_fame.gd" id="1_s10a7"]
+[ext_resource type="Texture2D" uid="uid://c40cod3nm6ek3" path="res://Декор/Background/WUAUHMxMklU.jpg" id="2_yim2s"]
+
+[node name="HallOfFame" type="CanvasLayer"]
+script = ExtResource("1_s10a7")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HiScore" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Лучший рекорд: ???"
+horizontal_alignment = 1
+
+[node name="GoBack" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Назад"
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="WuauhMxMklU" type="Sprite2D" parent="ParallaxBackground"]
+self_modulate = Color(1, 1, 0.976471, 0.803922)
+position = Vector2(293, 301.5)
+scale = Vector2(0.40125, 0.69)
+texture = ExtResource("2_yim2s")
+
+[node name="dfvParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground/WuauhMxMklU"]
+position = Vector2(-100, -366)
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GoBack" to="." method="_on_go_back_pressed"]

@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3kxdkh0vtyla"]
+
+[ext_resource type="Script" path="res://Menuss/menu.gd" id="1_vdtfa"]
+[ext_resource type="Texture2D" uid="uid://c40cod3nm6ek3" path="res://Декор/Background/WUAUHMxMklU.jpg" id="2_h32dp"]
+
+[node name="Menu" type="CanvasLayer"]
+script = ExtResource("1_vdtfa")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.0
+offset_top = -68.0
+offset_right = 54.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="StartGame" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Начать игру"
+
+[node name="Option" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Настройки"
+
+[node name="Hiscore" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Рекорды"
+
+[node name="Exit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Выход"
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="StillParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="WuauhMxMklU" type="Sprite2D" parent="ParallaxBackground/StillParallaxLayer"]
+position = Vector2(299.5, 302)
+scale = Vector2(0.386875, 0.686667)
+texture = ExtResource("2_h32dp")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/StartGame" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Hiscore" to="." method="_on_hiscore_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

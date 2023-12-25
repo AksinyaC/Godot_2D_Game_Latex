@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://uajt4qnv4e6n"]
+
+[ext_resource type="Script" path="res://Menuss/game_over.gd" id="1_qgnhj"]
+[ext_resource type="Texture2D" uid="uid://c40cod3nm6ek3" path="res://Декор/Background/WUAUHMxMklU.jpg" id="2_l3cus"]
+
+[node name="GameOver" type="CanvasLayer"]
+script = ExtResource("1_qgnhj")
+
+[node name="YouDied" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.0
+offset_top = -84.0
+offset_right = 82.0
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Вы умерли"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="WuauhMxMklU" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(294.5, 294.5)
+scale = Vector2(0.406875, 0.721111)
+texture = ExtResource("2_l3cus")
+
+[connection signal="pressed" from="YouDied" to="." method="_on_you_died_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

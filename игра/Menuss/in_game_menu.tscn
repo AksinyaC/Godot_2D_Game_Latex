@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdwamgbfe8utv"]
+
+[ext_resource type="Script" path="res://Menuss/in_game_menu.gd" id="1_scufv"]
+[ext_resource type="Texture2D" uid="uid://bew438eijwap0" path="res://Декор/Menu/Buttons/Close.png" id="2_08304"]
+
+[node name="InGameMenu" type="CanvasLayer"]
+script = ExtResource("1_scufv")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -202.0
+offset_top = 9.0
+offset_right = -1.0
+offset_bottom = 35.0
+grow_horizontal = 0
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Score" type="Label" parent="HBoxContainer/MarginContainer2"]
+layout_mode = 2
+text = "Очки: ???"
+
+[node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="HiScore" type="Label" parent="HBoxContainer/MarginContainer3"]
+layout_mode = 2
+text = "Рекорд: ???"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_left = 568.0
+offset_top = 6.0
+offset_right = 594.0
+offset_bottom = 37.0
+
+[node name="Button" type="Button" parent="MarginContainer"]
+layout_mode = 2
+text = "xx"
+
+[node name="Close" type="Sprite2D" parent="MarginContainer/Button"]
+position = Vector2(12, 16)
+scale = Vector2(2.06667, 2)
+texture = ExtResource("2_08304")
+
+[connection signal="pressed" from="MarginContainer/Button" to="." method="_on_button_pressed"]

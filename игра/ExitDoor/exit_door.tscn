@@ -1,0 +1,76 @@
+[gd_scene load_steps=10 format=3 uid="uid://ff7aa7ckkm7r"]
+
+[ext_resource type="Script" path="res://ExitDoor/exit_door.gd" id="1_85uni"]
+[ext_resource type="Texture2D" uid="uid://34mx2emujaq7" path="res://Декор/ExitDoor/png-transparent-portal-video-game-film-column-sprite-game-video-game-news-thumbnail-PhotoRoom.png-PhotoRoom.png" id="2_i6870"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkgsf"]
+atlas = ExtResource("2_i6870")
+region = Rect2(0, 0, 90, 214)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yubg2"]
+atlas = ExtResource("2_i6870")
+region = Rect2(90, 0, 90, 214)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5s54u"]
+atlas = ExtResource("2_i6870")
+region = Rect2(180, 0, 90, 214)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7j3y"]
+atlas = ExtResource("2_i6870")
+region = Rect2(270, 0, 90, 214)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cfjgy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dkgsf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yubg2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5s54u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t7j3y")
+}],
+"loop": true,
+"name": &"EixtDoor",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_alfyw"]
+size = Vector2(30, 43)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y6pyb"]
+size = Vector2(63, 53)
+
+[node name="ExitDoor" type="Node2D"]
+script = ExtResource("1_85uni")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -17)
+scale = Vector2(0.477778, 0.232477)
+sprite_frames = SubResource("SpriteFrames_cfjgy")
+animation = &"EixtDoor"
+frame_progress = 0.311855
+metadata/_edit_lock_ = true
+
+[node name="GoToNext" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoToNext"]
+position = Vector2(0, -19.5)
+shape = SubResource("RectangleShape2D_alfyw")
+metadata/_edit_lock_ = true
+
+[node name="DoorOpen" type="Area2D" parent="."]
+position = Vector2(0, -19)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorOpen"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_y6pyb")
+metadata/_edit_lock_ = true
+
+[connection signal="body_entered" from="GoToNext" to="." method="_on_go_to_next_body_entered"]
+[connection signal="body_entered" from="DoorOpen" to="." method="_on_door_open_body_entered"]
+[connection signal="body_exited" from="DoorOpen" to="." method="_on_door_open_body_exited"]
